@@ -8,7 +8,7 @@ let accessToken = '';
 // Function to Fetch a New Token
 async function getNewToken() {
     try {
-        console.log("🔐 Fetching new authentication token...");
+        console.log("Fetching new authentication token...");
         
         const response = await axios.post(AUTH_URL, {
             companyName: "IIIT Bhagalpur",
@@ -20,7 +20,7 @@ async function getNewToken() {
         });
 
         accessToken = response.data.access_token;
-        console.log("✅ New Access Token Acquired:", accessToken);
+        console.log("New Access Token Acquired:", accessToken);
     } catch (error) {
         console.error("❌ Error fetching authentication token:", error.response?.data || error.message);
     }
