@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Fetch Token on Server Start
 app.listen(3000, async () => {
-    console.log(`🚀 Server running on http://localhost:3000`);
+    console.log(`Server running on http://localhost:3000`);
     await getNewToken(); // Ensure token is fetched
 });
 
