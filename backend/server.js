@@ -1,16 +1,17 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
+const express = require('express');
+const { getNewToken } = require('./auth');
+const topUsersRoutes = require('./topUsers');
+const topPostsRoutes = require('./topPosts');
 
-dotenv.config();
 const app = express();
-
-app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Hello from Express!");
+// Fetch Token on Server Start
+app.listen(3000, async () => {
+    console.log(`🚀 Server running on http://localhost:3000`);
+    await getNewToken(); // Ensure token is fetched
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Routes
+app.use('/users', topUsersRoutes);
+app.use('/posts', topPostsRoutes);
